@@ -25,6 +25,11 @@ namespace ImageUploadingASP.NetCore.Controllers
         [HttpPost]
         public IActionResult AddProduct(ProductViewModel data)
         {
+            if (!ModelState.IsValid)
+            {
+                // Return the view with validation errors
+                return View(data);
+            }
             string fileName = "";
             if (data.Photo != null)
             {   
